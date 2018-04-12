@@ -15,1831 +15,275 @@ Executes the selection. Sends the selected text to the REPL.
 You can disable this help text in the settings.
 Atom Ink does not appear to be installed. Install it to get a better REPL experience.
 Starting REPL with lein in /Users/michelly/.atom/packages/proto-repl/proto-no-proj
-Retrieving proto-repl-charts/proto-repl-charts/0.3.1/proto-repl-charts-0.3.1.pom from clojars
-Retrieving aysylu/loom/0.5.4/loom-0.5.4.pom from clojars
-Retrieving org/clojure/data.priority-map/0.0.5/data.priority-map-0.0.5.pom from central
-Retrieving proto-repl/proto-repl/0.3.1/proto-repl-0.3.1.pom from clojars
-Retrieving org/clojure/core.async/0.2.374/core.async-0.2.374.pom from central
-Retrieving org/clojure/tools.analyzer.jvm/0.6.9/tools.analyzer.jvm-0.6.9.pom from central
-Retrieving org/clojure/tools.analyzer/0.6.7/tools.analyzer-0.6.7.pom from central
-Retrieving org/clojure/core.memoize/0.5.8/core.memoize-0.5.8.pom from central
-Retrieving org/clojure/core.cache/0.6.4/core.cache-0.6.4.pom from central
-Retrieving org/clojure/data.priority-map/0.0.4/data.priority-map-0.0.4.pom from central
-Retrieving org/clojure/tools.reader/1.0.0-alpha1/tools.reader-1.0.0-alpha1.pom from central
-Retrieving compliment/compliment/0.2.7/compliment-0.2.7.pom from clojars
-Retrieving defprecated/defprecated/0.1.3/defprecated-0.1.3.pom from clojars
-Retrieving org/clojure/core.async/0.2.374/core.async-0.2.374.jar from central
-Retrieving org/clojure/data.priority-map/0.0.5/data.priority-map-0.0.5.jar from central
-Retrieving org/clojure/core.cache/0.6.4/core.cache-0.6.4.jar from central
-Retrieving org/clojure/tools.analyzer.jvm/0.6.9/tools.analyzer.jvm-0.6.9.jar from central
-Retrieving org/clojure/tools.analyzer/0.6.7/tools.analyzer-0.6.7.jar from central
-Retrieving org/clojure/core.memoize/0.5.8/core.memoize-0.5.8.jar from central
-Retrieving org/ow2/asm/asm-all/4.2/asm-all-4.2.jar from central
-Retrieving org/clojure/tools.reader/1.0.0-alpha1/tools.reader-1.0.0-alpha1.jar from central
-Retrieving proto-repl/proto-repl/0.3.1/proto-repl-0.3.1.jar from clojars
-Retrieving proto-repl-charts/proto-repl-charts/0.3.1/proto-repl-charts-0.3.1.jar from clojars
-Retrieving aysylu/loom/0.5.4/loom-0.5.4.jar from clojars
 Default Proto REPL Leiningen project started
-nREPL server started on port 55188 on host 127.0.0.1 - nrepl://127.0.0.1:55188
+nREPL server started on port 57155 on host 127.0.0.1 - nrepl://127.0.0.1:57155
 Refreshing code...
 :reloading (user)
 Default Proto REPL Leiningen project started
 Refresh complete
-(str "using " "str " "function")
-user=>
-"using str function"
-(str "using " "str " "function")
-user=>
-"using str function"
-3
-user=>
-3
-(vector 1 2 3)
-user=>
-[1 2 3]
-[1 2 3]
-user=>
-[1 2 3]
-(1 2 3)
-ClassCastException java.lang.Long cannot be cast to clojure.lang.IFn  user/eval13060 (form-init5289445198694280011.clj:9)
-(list 1 2 3)
-user=>
-(1 2 3)
-(hash-map 1 2 3)
-IllegalArgumentException No value supplied for key: 3  clojure.lang.PersistentHashMap.create (PersistentHashMap.java:77)
-(hash-map :1 1 :2 2 :3 3)
-user=>
-{:1 1, :2 2, :3 3}
-{:1 1 :2 2 :3 3}
-user=>
-{:1 1, :2 2, :3 3}
-(hash-set 1 1 2 2 3 3)
-user=>
-#{1 3 2}
-{1 1 2 2 3 3}
-user=>
-{1 1, 2 2, 3 3}
-{1 1 2 2 3}
-RuntimeException Map literal must contain an even number of forms  clojure.lang.Util.runtimeException (Util.java:221)
-(def add-100
-  [n]
-  (+ 100 n))
-CompilerException java.lang.RuntimeException: Too many arguments to def, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:19:1) 
-(add-100 10)
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: add-100 in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:1:1) 
-(defn add-100
-  [n]
-  (+ 100 n))
-user=>
-#'user/add-100
-(add-100 10)
-user=>
-110
-(defn mapset
-  [f coll]
-  (loop [result (sorted-set)
-    resto coll]
-    (if (empty? resto)
-      result
-      (recur (conj result (f (first resto))) (rest resto)))))
-user=>
-#'user/mapset
-(mapset inc [1 2 3])
-user=>
-#{2 3 4}
-(range 2)
-user=>
-(0 1)
-(seq 2)
-IllegalArgumentException Don't know how to create ISeq from: java.lang.Long  clojure.lang.RT.seqFrom (RT.java:542)
-(defn matching-parts
-  [part n]
-  (if [(re-find #"^left-" (:name part))]
-    (multiply-parts part n)
-    [part]))
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: multiply-parts in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:71:5) 
-(defn multiply-parts
-  ([part n]
-    multiply-parts part n [])
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (recur part (into parts {:name (clojure.string/replace (:name part) #"^left" (str number))
-                 :size (:size part)}) (dec n)))))
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: number in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:84:82) 
-(defn better-symmetrize-body-parts
-  "Expects a seq of maps that have a :name and :size"
-  [asym-body-parts]
-  (reduce (fn [final-body-parts part]
-            (into final-body-parts (set (matching-parts part 5))))
-          []
-          asym-body-parts))
-user=>
-#'user/better-symmetrize-body-parts
-(multiply-parts part n)
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: part in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:71:5) 
-(defn matching-parts
-  [part n]
-  (if [(re-find #"^left-" (:name part))]
-    (multiply-parts part n)
-    [part]))
-user=>
-#'user/matching-parts
-(defn multiply-parts
-  ([part n]
-    multiply-parts part n [])
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (recur part (into parts {:name (clojure.string/replace (:name part) #"^left" (str number))
-                 :size (:size part)}) (dec n)))))
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: number in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:84:82) 
-(defn multiply-parts
-  ([part n]
-    multiply-parts part n [])
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (recur part (into parts {:name (clojure.string/replace (:name part) #"^left" (str number))
-                 :size (:size part)}) (dec n)))))
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: number in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:84:82) 
-(defn multiply-parts
-  ([part n]
-    multiply-parts part n [])
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (recur part (into parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)}) (dec n)))))
-user=>
-#'user/multiply-parts
-(:name part)
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: part in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:70:27) 
-(defn matching-parts
-  [part n]
-  (if [(re-find #"^left-" (:name part))]
-    (multiply-parts part n)
-    [part]))
-user=>
-#'user/matching-parts
-(defn better-symmetrize-body-parts
-  "Expects a seq of maps that have a :name and :size"
-  [asym-body-parts]
-  (reduce (fn [final-body-parts part]
-            (into final-body-parts (set (matching-parts part 5))))
-          []
-          asym-body-parts))
-user=>
-#'user/better-symmetrize-body-parts
-(def asym-hobbit-body-parts [{:name "head" :size 3}
-                             {:name "left-eye" :size 1}
-                             {:name "left-ear" :size 1}
-                             {:name "mouth" :size 1}
-                             {:name "nose" :size 1}
-                             {:name "neck" :size 2}
-                             {:name "left-shoulder" :size 3}
-                             {:name "left-upper-arm" :size 3}
-                             {:name "chest" :size 10}
-                             {:name "back" :size 10}
-                             {:name "left-forearm" :size 3}
-                             {:name "abdomen" :size 6}
-                             {:name "left-kidney" :size 1}
-                             {:name "left-hand" :size 2}
-                             {:name "left-knee" :size 2}
-                             {:name "left-thigh" :size 4}
-                             {:name "left-lower-leg" :size 3}
-                             {:name "left-achilles" :size 1}
-                             {:name "left-foot" :size 2}])
-user=>
-#'user/asym-hobbit-body-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-user=>
-[]
-(println "OK!")
-OK!
+(def records {:name "Edward Cullen", :glitter-index 10}
+ {:name "Jacob Black", :glitter-index 3}
+ {:name "Carlisle Cullen", :glitter-index 6})
+CompilerException java.lang.RuntimeException: Too many arguments to def, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:3:1) 
+(def records {:name "Edward Cullen", :glitter-index 10}
+ {:name "Jacob Black", :glitter-index 3}
+ {:name "Carlisle Cullen", :glitter-index 6})
+CompilerException java.lang.RuntimeException: Too many arguments to def, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:3:1) 
+This command requires you to position the cursor on a Clojure var.
 user=>
 nil
-(defn matching-parts
-  [part n]
-  (if [(re-find #"^left-" (:name part))]
-    ; (multiply-parts part n)
-    (println "OK!")
-    [part]))
+(glitter-filter 3 records)
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: glitter-filter in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:1:1) 
+(defn glitter-filter
+  [minimum-glitter records]
+  (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
 user=>
-#'user/matching-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
-OK!
+#'user/glitter-filter
+(glitter-filter 3 records)
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: records in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:1:1) 
+(defn glitter-filter
+  [minimum-glitter records]
+  (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
 user=>
-[]
-(defn matching-parts
-  [part n]
-  (if [(re-find #"^left-" (:name part))]
-    (multiply-parts part n)
-    [part]))
+#'user/glitter-filter
+(glitter-filter 3 records)
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: records in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:1:1) 
+; 1. Turn the result of your glitter filter into a list of names.
+
+(def records [{:name "Edward Cullen", :glitter-index 10}
+ {:name "Jacob Black", :glitter-index 3}
+ {:name "Carlisle Cullen", :glitter-index 6}])
+
+(defn glitter-filter
+  [minimum-glitter records]
+  (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
 user=>
-#'user/matching-parts
-(defn multiply-parts
-  ([part n]
-    multiply-parts part n [])
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println n)
-    (recur part (into parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)}) (dec n))))))
+#'user/glitter-filter
+; 1. Turn the result of your glitter filter into a list of names.
+
+(def records [{:name "Edward Cullen", :glitter-index 10}
+ {:name "Jacob Black", :glitter-index 3}
+ {:name "Carlisle Cullen", :glitter-index 6}])
+
+(defn glitter-filter
+  [minimum-glitter records]
+  (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
+
+(glitter-filter 3 records)
 user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
+("Edward Cullen" "Jacob Black" "Carlisle Cullen")
+glitter-filter
 user=>
-[]
-(defn multiply-parts
-  ([part n]
-    (println n)
-    multiply-parts part n [])
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println n)
-    (recur part (into parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)}) (dec n))))))
+#object[user$glitter_filter 0x29e0d2d2 "user$glitter_filter@29e0d2d2"]
+(glitter-filter 3 records)
 user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
+("Edward Cullen" "Jacob Black" "Carlisle Cullen")
+(def append
+  [suspects name gitter-index]
+  (conj suspects {:name name :glitter-index glitter-index}))
+CompilerException java.lang.RuntimeException: Too many arguments to def, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:14:1) 
+(append records "Michelly" 4)
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: append in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:1:1) 
+; 1. Turn the result of your glitter filter into a list of names.
 
-5
-5
-5
-5
-5
-5
-5
-5
-5
-5
-5
-5
-5
-5
-5
-5
-5
-5
-5
+(def records [{:name "Edward Cullen", :glitter-index 10}
+ {:name "Jacob Black", :glitter-index 3}
+ {:name "Carlisle Cullen", :glitter-index 6}])
+
+(defn glitter-filter
+  [minimum-glitter records]
+  (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
+
+; 2. Write a function, append, which will append a new suspect to your list of
+; suspects.
+
+(def append
+  [suspects name gitter-index]
+  (conj suspects {:name name :glitter-index glitter-index}))
+
+  (append records "Michelly" 4)
+CompilerException java.lang.RuntimeException: Too many arguments to def, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:14:1) 
+; 1. Turn the result of your glitter filter into a list of names.
+
+(def records [{:name "Edward Cullen", :glitter-index 10}
+ {:name "Jacob Black", :glitter-index 3}
+ {:name "Carlisle Cullen", :glitter-index 6}])
+
+(defn glitter-filter
+  [minimum-glitter records]
+  (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
+
+; 2. Write a function, append, which will append a new suspect to your list of
+; suspects.
+
+(defn append
+  [suspects name gitter-index]
+  (conj suspects {:name name :glitter-index glitter-index}))
+
+  (append records "Michelly" 4)
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: glitter-index in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:16:3) 
+; 1. Turn the result of your glitter filter into a list of names.
+
+(def records [{:name "Edward Cullen", :glitter-index 10}
+ {:name "Jacob Black", :glitter-index 3}
+ {:name "Carlisle Cullen", :glitter-index 6}])
+
+(defn glitter-filter
+  [minimum-glitter records]
+  (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
+
+; 2. Write a function, append, which will append a new suspect to your list of
+; suspects.
+
+(defn append
+  [suspects name glitter-index]
+  (conj suspects {:name name :glitter-index glitter-index}))
+
+  (append records "Michelly" 4)
 user=>
-[]
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n []))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println n)
-    (recur part (into parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)}) (dec n))))))
+[{:name "Edward Cullen", :glitter-index 10} {:name "Jacob Black", :glitter-index 3} {:name "Carlisle Cullen", :glitter-index 6} {:name "Michelly", :glitter-index 4}]
+(reduce sum (map inc [1 2 3]))
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: sum in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:1:5) 
+(reduce +
+   (map inc [1 2 3]))
 user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
+9
 
-
-5
-[[:name head] [:size 3]]
-ClassCastException java.lang.Long cannot be cast to clojure.lang.IPersistentCollection  clojure.core/conj--4345 (core.clj:82)
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n []))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println n)
-    (recur part (into (dec n) parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)}))))))
-CompilerException java.lang.IllegalArgumentException: Mismatched argument count to recur, expected: 3 args, got: 2, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:85:5) 
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-5
-[[:name head] [:size 3]]
-ClassCastException java.lang.Long cannot be cast to clojure.lang.IPersistentCollection  clojure.core/conj--4345 (core.clj:82)
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n []))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println n)
-    (recur part (dec n) (into parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)}))))))
+(defn str->csv
+  [suspects]
+  (reduce clojure.string/join "\n" (map (fn [suspect]
+            (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+            suspects)))
 user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
+#'user/str->csv
+(str->csv records)
 user=>
-[[:size 3] [:name "head"] [:name "2-eye"] [:name "5-eye"] [:name "4-eye"] [:name "1-eye"] [:name "3-eye"] [:size 1] [:name "3-ear"] [:name "4-ear"] [:name "1-ear"] [:name "5-ear"] [:size 1] [:name "2-ear"] [:name "mouth"] [:size 1] [:size 1] [:name "nose"] [:size 2] [:name "neck"] [:name "3-shoulder"] [:name "2-shoulder"] [:size 3] [:name "5-shoulder"] [:name "4-shoulder"] [:name "1-shoulder"] [:name "3-upper-arm"] [:size 3] [:name "1-upper-arm"] [:name "4-upper-arm"] [:name "5-upper-arm"] [:name "2-upper-arm"] [:size 10] [:name "chest"] [:size 10] [:name "back"] [:name "1-forearm"] [:name "3-forearm"] [:name "4-forearm"] [:size 3] [:name "5-forearm"] [:name "2-forearm"] [:name "abdomen"] [:size 6] [:name "2-kidney"] [:name "4-kidney"] [:name "3-kidney"] [:name "5-kidney"] [:name "1-kidney"] [:size 1] [:name "2-hand"] [:name "5-hand"] [:name "1-hand"] [:size 2] [:name "4-hand"] [:name "3-hand"] [:name "2-knee"] [:name "1-knee"] [:size 2] [:name "5-knee"] [:name "3-knee"] [:name "4-knee"] [:name "5-thigh"] [:name "3-thigh"] [:name "2-thigh"] [:size 4] [:name "1-thigh"] [:name "4-thigh"] [:name "5-lower-leg"] [:size 3] [:name "3-lower-leg"] [:name "2-lower-leg"] [:name "1-lower-leg"] [:name "4-lower-leg"] [:name "4-achilles"] [:name "2-achilles"] [:name "3-achilles"] [:name "5-achilles"] [:size 1] [:name "1-achilles"] [:name "1-foot"] [:name "3-foot"] [:name "2-foot"] [:size 2] [:name "5-foot"] [:name "4-foot"]]
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n {}))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println n)
-    (recur part (dec n) (into parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)}))))))
-user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-user=>
-[[:size 3] [:name "head"] [:name "1-eye"] [:size 1] [:name "1-ear"] [:size 1] [:name "mouth"] [:size 1] [:size 1] [:name "nose"] [:size 2] [:name "neck"] [:size 3] [:name "1-shoulder"] [:size 3] [:name "1-upper-arm"] [:size 10] [:name "chest"] [:size 10] [:name "back"] [:name "1-forearm"] [:size 3] [:name "abdomen"] [:size 6] [:name "1-kidney"] [:size 1] [:name "1-hand"] [:size 2] [:name "1-knee"] [:size 2] [:size 4] [:name "1-thigh"] [:size 3] [:name "1-lower-leg"] [:size 1] [:name "1-achilles"] [:name "1-foot"] [:size 2]]
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n (hash-map)))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println n)
-    (recur part (dec n) (into parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)}))))))
-user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-5
-4
-3
-2
-1
-user=>
-[[:size 3] [:name "head"] [:name "1-eye"] [:size 1] [:name "1-ear"] [:size 1] [:name "mouth"] [:size 1] [:size 1] [:name "nose"] [:size 2] [:name "neck"] [:size 3] [:name "1-shoulder"] [:size 3] [:name "1-upper-arm"] [:size 10] [:name "chest"] [:size 10] [:name "back"] [:name "1-forearm"] [:size 3] [:name "abdomen"] [:size 6] [:name "1-kidney"] [:size 1] [:name "1-hand"] [:size 2] [:name "1-knee"] [:size 2] [:size 4] [:name "1-thigh"] [:size 3] [:name "1-lower-leg"] [:size 1] [:name "1-achilles"] [:name "1-foot"] [:size 2]]
-(= 0 n)
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: n in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:82:9) 
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n (hash-map)))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println parts)
-    (recur part (dec n) (into parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)}))))))
-user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-{}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{}
-{:name 5-eye, :size 1}
-{:name 4-eye, :size 1}
-{:name 3-eye, :size 1}
-{:name 2-eye, :size 1}
-{}
-{:name 5-ear, :size 1}
-{:name 4-ear, :size 1}
-{:name 3-ear, :size 1}
-{:name 2-ear, :size 1}
-{}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{}
-{:name 5-shoulder, :size 3}
-{:name 4-shoulder, :size 3}
-{:name 3-shoulder, :size 3}
-{:name 2-shoulder, :size 3}
-{}
-{:name 5-upper-arm, :size 3}
-{:name 4-upper-arm, :size 3}
-{:name 3-upper-arm, :size 3}
-{:name 2-upper-arm, :size 3}
-{}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{}
-{:name 5-forearm, :size 3}
-{:name 4-forearm, :size 3}
-{:name 3-forearm, :size 3}
-{:name 2-forearm, :size 3}
-{}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{}
-{:name 5-kidney, :size 1}
-{:name 4-kidney, :size 1}
-{:name 3-kidney, :size 1}
-{:name 2-kidney, :size 1}
-{}
-{:name 5-hand, :size 2}
-{:name 4-hand, :size 2}
-{:name 3-hand, :size 2}
-{:name 2-hand, :size 2}
-{}
-{:name 5-knee, :size 2}
-{:name 4-knee, :size 2}
-{:name 3-knee, :size 2}
-{:name 2-knee, :size 2}
-{}
-{:name 5-thigh, :size 4}
-{:name 4-thigh, :size 4}
-{:name 3-thigh, :size 4}
-{:name 2-thigh, :size 4}
-{}
-{:name 5-lower-leg, :size 3}
-{:name 4-lower-leg, :size 3}
-{:name 3-lower-leg, :size 3}
-{:name 2-lower-leg, :size 3}
-{}
-{:name 5-achilles, :size 1}
-{:name 4-achilles, :size 1}
-{:name 3-achilles, :size 1}
-{:name 2-achilles, :size 1}
-{}
-{:name 5-foot, :size 2}
-{:name 4-foot, :size 2}
-{:name 3-foot, :size 2}
-{:name 2-foot, :size 2}
-user=>
-[[:size 3] [:name "head"] [:name "1-eye"] [:size 1] [:name "1-ear"] [:size 1] [:name "mouth"] [:size 1] [:size 1] [:name "nose"] [:size 2] [:name "neck"] [:size 3] [:name "1-shoulder"] [:size 3] [:name "1-upper-arm"] [:size 10] [:name "chest"] [:size 10] [:name "back"] [:name "1-forearm"] [:size 3] [:name "abdomen"] [:size 6] [:name "1-kidney"] [:size 1] [:name "1-hand"] [:size 2] [:name "1-knee"] [:size 2] [:size 4] [:name "1-thigh"] [:size 3] [:name "1-lower-leg"] [:size 1] [:name "1-achilles"] [:name "1-foot"] [:size 2]]
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n (hash-map)))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println parts)
-    (recur part (dec n) (into parts {:name (clojure.string/replace (:name part) #"^left" (str "" n))
-                 :size (:size part)}))))))
-user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-{}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{}
-{:name 5-eye, :size 1}
-{:name 4-eye, :size 1}
-{:name 3-eye, :size 1}
-{:name 2-eye, :size 1}
-{}
-{:name 5-ear, :size 1}
-{:name 4-ear, :size 1}
-{:name 3-ear, :size 1}
-{:name 2-ear, :size 1}
-{}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{}
-{:name 5-shoulder, :size 3}
-{:name 4-shoulder, :size 3}
-{:name 3-shoulder, :size 3}
-{:name 2-shoulder, :size 3}
-{}
-{:name 5-upper-arm, :size 3}
-{:name 4-upper-arm, :size 3}
-{:name 3-upper-arm, :size 3}
-{:name 2-upper-arm, :size 3}
-{}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{}
-{:name 5-forearm, :size 3}
-{:name 4-forearm, :size 3}
-{:name 3-forearm, :size 3}
-{:name 2-forearm, :size 3}
-{}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{}
-{:name 5-kidney, :size 1}
-{:name 4-kidney, :size 1}
-{:name 3-kidney, :size 1}
-{:name 2-kidney, :size 1}
-{}
-{:name 5-hand, :size 2}
-{:name 4-hand, :size 2}
-{:name 3-hand, :size 2}
-{:name 2-hand, :size 2}
-{}
-{:name 5-knee, :size 2}
-{:name 4-knee, :size 2}
-{:name 3-knee, :size 2}
-{:name 2-knee, :size 2}
-{}
-{:name 5-thigh, :size 4}
-{:name 4-thigh, :size 4}
-{:name 3-thigh, :size 4}
-{:name 2-thigh, :size 4}
-{}
-{:name 5-lower-leg, :size 3}
-{:name 4-lower-leg, :size 3}
-{:name 3-lower-leg, :size 3}
-{:name 2-lower-leg, :size 3}
-{}
-{:name 5-achilles, :size 1}
-{:name 4-achilles, :size 1}
-{:name 3-achilles, :size 1}
-{:name 2-achilles, :size 1}
-{}
-{:name 5-foot, :size 2}
-{:name 4-foot, :size 2}
-{:name 3-foot, :size 2}
-{:name 2-foot, :size 2}
-user=>
-[[:size 3] [:name "head"] [:name "1-eye"] [:size 1] [:name "1-ear"] [:size 1] [:name "mouth"] [:size 1] [:size 1] [:name "nose"] [:size 2] [:name "neck"] [:size 3] [:name "1-shoulder"] [:size 3] [:name "1-upper-arm"] [:size 10] [:name "chest"] [:size 10] [:name "back"] [:name "1-forearm"] [:size 3] [:name "abdomen"] [:size 6] [:name "1-kidney"] [:size 1] [:name "1-hand"] [:size 2] [:name "1-knee"] [:size 2] [:size 4] [:name "1-thigh"] [:size 3] [:name "1-lower-leg"] [:size 1] [:name "1-achilles"] [:name "1-foot"] [:size 2]]
-(defn better-symmetrize-body-parts
-  "Expects a seq of maps that have a :name and :size"
-  [asym-body-parts]
-  (reduce (fn [final-body-parts part]
-            (into final-body-parts (set [(matching-parts part 5)])))
-          []
-          asym-body-parts))
-user=>
-#'user/better-symmetrize-body-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-{}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{}
-{:name 5-eye, :size 1}
-{:name 4-eye, :size 1}
-{:name 3-eye, :size 1}
-{:name 2-eye, :size 1}
-{}
-{:name 5-ear, :size 1}
-{:name 4-ear, :size 1}
-{:name 3-ear, :size 1}
-{:name 2-ear, :size 1}
-{}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{}
-{:name 5-shoulder, :size 3}
-{:name 4-shoulder, :size 3}
-{:name 3-shoulder, :size 3}
-{:name 2-shoulder, :size 3}
-{}
-{:name 5-upper-arm, :size 3}
-{:name 4-upper-arm, :size 3}
-{:name 3-upper-arm, :size 3}
-{:name 2-upper-arm, :size 3}
-{}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{}
-{:name 5-forearm, :size 3}
-{:name 4-forearm, :size 3}
-{:name 3-forearm, :size 3}
-{:name 2-forearm, :size 3}
-{}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{}
-{:name 5-kidney, :size 1}
-{:name 4-kidney, :size 1}
-{:name 3-kidney, :size 1}
-{:name 2-kidney, :size 1}
-{}
-{:name 5-hand, :size 2}
-{:name 4-hand, :size 2}
-{:name 3-hand, :size 2}
-{:name 2-hand, :size 2}
-{}
-{:name 5-knee, :size 2}
-{:name 4-knee, :size 2}
-{:name 3-knee, :size 2}
-{:name 2-knee, :size 2}
-{}
-{:name 5-thigh, :size 4}
-{:name 4-thigh, :size 4}
-{:name 3-thigh, :size 4}
-{:name 2-thigh, :size 4}
-{}
-{:name 5-lower-leg, :size 3}
-{:name 4-lower-leg, :size 3}
-{:name 3-lower-leg, :size 3}
-{:name 2-lower-leg, :size 3}
-{}
-{:name 5-achilles, :size 1}
-{:name 4-achilles, :size 1}
-{:name 3-achilles, :size 1}
-{:name 2-achilles, :size 1}
-{}
-{:name 5-foot, :size 2}
-{:name 4-foot, :size 2}
-{:name 3-foot, :size 2}
-{:name 2-foot, :size 2}
-user=>
-[{:name "head", :size 3} {:name "1-eye", :size 1} {:name "1-ear", :size 1} {:name "mouth", :size 1} {:name "nose", :size 1} {:name "neck", :size 2} {:name "1-shoulder", :size 3} {:name "1-upper-arm", :size 3} {:name "chest", :size 10} {:name "back", :size 10} {:name "1-forearm", :size 3} {:name "abdomen", :size 6} {:name "1-kidney", :size 1} {:name "1-hand", :size 2} {:name "1-knee", :size 2} {:name "1-thigh", :size 4} {:name "1-lower-leg", :size 3} {:name "1-achilles", :size 1} {:name "1-foot", :size 2}]
-[{:name (clojure.string/replace (:name part) #"^left" (str "" n))
-                 :size (:size part)}]
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: part in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:85:69) 
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n (hash-map)))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println parts)
-    (recur part (dec n) (into parts [{:name (clojure.string/replace (:name part) #"^left" (str "" n))
-                 :size (:size part)}]))))))
-user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-
-{}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{}
-{:name 5-eye, :size 1}
-{:name 4-eye, :size 1}
-{:name 3-eye, :size 1}
-{:name 2-eye, :size 1}
-{}
-{:name 5-ear, :size 1}
-{:name 4-ear, :size 1}
-{:name 3-ear, :size 1}
-{:name 2-ear, :size 1}
-{}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{}
-{:name 5-shoulder, :size 3}
-{:name 4-shoulder, :size 3}
-{:name 3-shoulder, :size 3}
-{:name 2-shoulder, :size 3}
-{}
-{:name 5-upper-arm, :size 3}
-{:name 4-upper-arm, :size 3}
-{:name 3-upper-arm, :size 3}
-{:name 2-upper-arm, :size 3}
-{}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{}
-{:name 5-forearm, :size 3}
-{:name 4-forearm, :size 3}
-{:name 3-forearm, :size 3}
-{:name 2-forearm, :size 3}
-{}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{}
-{:name 5-kidney, :size 1}
-{:name 4-kidney, :size 1}
-{:name 3-kidney, :size 1}
-{:name 2-kidney, :size 1}
-{}
-{:name 5-hand, :size 2}
-{:name 4-hand, :size 2}
-{:name 3-hand, :size 2}
-{:name 2-hand, :size 2}
-{}
-{:name 5-knee, :size 2}
-{:name 4-knee, :size 2}
-{:name 3-knee, :size 2}
-{:name 2-knee, :size 2}
-{}
-{:name 5-thigh, :size 4}
-{:name 4-thigh, :size 4}
-{:name 3-thigh, :size 4}
-{:name 2-thigh, :size 4}
-{}
-{:name 5-lower-leg, :size 3}
-{:name 4-lower-leg, :size 3}
-{:name 3-lower-leg, :size 3}
-{:name 2-lower-leg, :size 3}
-{}
-{:name 5-achilles, :size 1}
-{:name 4-achilles, :size 1}
-{:name 3-achilles, :size 1}
-{:name 2-achilles, :size 1}
-{}
-{:name 5-foot, :size 2}
-{:name 4-foot, :size 2}
-{:name 3-foot, :size 2}
-{:name 2-foot, :size 2}
-user=>
-[{:name "head", :size 3} {:name "1-eye", :size 1} {:name "1-ear", :size 1} {:name "mouth", :size 1} {:name "nose", :size 1} {:name "neck", :size 2} {:name "1-shoulder", :size 3} {:name "1-upper-arm", :size 3} {:name "chest", :size 10} {:name "back", :size 10} {:name "1-forearm", :size 3} {:name "abdomen", :size 6} {:name "1-kidney", :size 1} {:name "1-hand", :size 2} {:name "1-knee", :size 2} {:name "1-thigh", :size 4} {:name "1-lower-leg", :size 3} {:name "1-achilles", :size 1} {:name "1-foot", :size 2}]
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n (hash-map)))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println parts)
-    (recur part (dec n) (conj parts {:name (clojure.string/replace (:name part) #"^left" (str "" n))
-                 :size (:size part)}))))))
-user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-
-{}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{}
-{:name 5-eye, :size 1}
-{:name 4-eye, :size 1}
-{:name 3-eye, :size 1}
-{:name 2-eye, :size 1}
-{}
-{:name 5-ear, :size 1}
-{:name 4-ear, :size 1}
-{:name 3-ear, :size 1}
-{:name 2-ear, :size 1}
-{}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{}
-{:name 5-shoulder, :size 3}
-{:name 4-shoulder, :size 3}
-{:name 3-shoulder, :size 3}
-{:name 2-shoulder, :size 3}
-{}
-{:name 5-upper-arm, :size 3}
-{:name 4-upper-arm, :size 3}
-{:name 3-upper-arm, :size 3}
-{:name 2-upper-arm, :size 3}
-{}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{}
-{:name 5-forearm, :size 3}
-{:name 4-forearm, :size 3}
-{:name 3-forearm, :size 3}
-{:name 2-forearm, :size 3}
-{}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{}
-{:name 5-kidney, :size 1}
-{:name 4-kidney, :size 1}
-{:name 3-kidney, :size 1}
-{:name 2-kidney, :size 1}
-{}
-{:name 5-hand, :size 2}
-{:name 4-hand, :size 2}
-{:name 3-hand, :size 2}
-{:name 2-hand, :size 2}
-{}
-{:name 5-knee, :size 2}
-{:name 4-knee, :size 2}
-{:name 3-knee, :size 2}
-{:name 2-knee, :size 2}
-{}
-{:name 5-thigh, :size 4}
-{:name 4-thigh, :size 4}
-{:name 3-thigh, :size 4}
-{:name 2-thigh, :size 4}
-{}
-{:name 5-lower-leg, :size 3}
-{:name 4-lower-leg, :size 3}
-{:name 3-lower-leg, :size 3}
-{:name 2-lower-leg, :size 3}
-{}
-{:name 5-achilles, :size 1}
-{:name 4-achilles, :size 1}
-{:name 3-achilles, :size 1}
-{:name 2-achilles, :size 1}
-{}
-{:name 5-foot, :size 2}
-{:name 4-foot, :size 2}
-{:name 3-foot, :size 2}
-{:name 2-foot, :size 2}
-user=>
-[{:name "head", :size 3} {:name "1-eye", :size 1} {:name "1-ear", :size 1} {:name "mouth", :size 1} {:name "nose", :size 1} {:name "neck", :size 2} {:name "1-shoulder", :size 3} {:name "1-upper-arm", :size 3} {:name "chest", :size 10} {:name "back", :size 10} {:name "1-forearm", :size 3} {:name "abdomen", :size 6} {:name "1-kidney", :size 1} {:name "1-hand", :size 2} {:name "1-knee", :size 2} {:name "1-thigh", :size 4} {:name "1-lower-leg", :size 3} {:name "1-achilles", :size 1} {:name "1-foot", :size 2}]
-(re-find #"^left-" "head")
-user=>
-nil
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n (hash-map)))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println parts)
-    (multiply-parts part (dec n) (conj parts {:name (clojure.string/replace (:name part) #"^left" (str "" n))
-                 :size (:size part)}))))))
-user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-
-{}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{:name head, :size 3}
-{}
-{:name 5-eye, :size 1}
-{:name 4-eye, :size 1}
-{:name 3-eye, :size 1}
-{:name 2-eye, :size 1}
-{}
-{:name 5-ear, :size 1}
-{:name 4-ear, :size 1}
-{:name 3-ear, :size 1}
-{:name 2-ear, :size 1}
-{}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{:name mouth, :size 1}
-{}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{:name nose, :size 1}
-{}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{:name neck, :size 2}
-{}
-{:name 5-shoulder, :size 3}
-{:name 4-shoulder, :size 3}
-{:name 3-shoulder, :size 3}
-{:name 2-shoulder, :size 3}
-{}
-{:name 5-upper-arm, :size 3}
-{:name 4-upper-arm, :size 3}
-{:name 3-upper-arm, :size 3}
-{:name 2-upper-arm, :size 3}
-{}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{:name chest, :size 10}
-{}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{:name back, :size 10}
-{}
-{:name 5-forearm, :size 3}
-{:name 4-forearm, :size 3}
-{:name 3-forearm, :size 3}
-{:name 2-forearm, :size 3}
-{}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{:name abdomen, :size 6}
-{}
-{:name 5-kidney, :size 1}
-{:name 4-kidney, :size 1}
-{:name 3-kidney, :size 1}
-{:name 2-kidney, :size 1}
-{}
-{:name 5-hand, :size 2}
-{:name 4-hand, :size 2}
-{:name 3-hand, :size 2}
-{:name 2-hand, :size 2}
-{}
-{:name 5-knee, :size 2}
-{:name 4-knee, :size 2}
-{:name 3-knee, :size 2}
-{:name 2-knee, :size 2}
-{}
-{:name 5-thigh, :size 4}
-{:name 4-thigh, :size 4}
-{:name 3-thigh, :size 4}
-{:name 2-thigh, :size 4}
-{}
-{:name 5-lower-leg, :size 3}
-{:name 4-lower-leg, :size 3}
-{:name 3-lower-leg, :size 3}
-{:name 2-lower-leg, :size 3}
-{}
-{:name 5-achilles, :size 1}
-{:name 4-achilles, :size 1}
-{:name 3-achilles, :size 1}
-{:name 2-achilles, :size 1}
-{}
-{:name 5-foot, :size 2}
-{:name 4-foot, :size 2}
-{:name 3-foot, :size 2}
-{:name 2-foot, :size 2}
-user=>
-[{:name "head", :size 3} {:name "1-eye", :size 1} {:name "1-ear", :size 1} {:name "mouth", :size 1} {:name "nose", :size 1} {:name "neck", :size 2} {:name "1-shoulder", :size 3} {:name "1-upper-arm", :size 3} {:name "chest", :size 10} {:name "back", :size 10} {:name "1-forearm", :size 3} {:name "abdomen", :size 6} {:name "1-kidney", :size 1} {:name "1-hand", :size 2} {:name "1-knee", :size 2} {:name "1-thigh", :size 4} {:name "1-lower-leg", :size 3} {:name "1-achilles", :size 1} {:name "1-foot", :size 2}]
-(conj {} {:name "oi"})
-user=>
-{:name "oi"}
-(into {} {:name "oi"})
-user=>
-{:name "oi"}
-(seq [:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)])
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: part in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:85:82) 
-([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println parts)
-    (multiply-parts part (dec n) (conj parts (seq [:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)]))))))
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: part in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:81:3) 
-([part n]
-    (multiply-parts part n [])
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println parts)
-    (multiply-parts part (dec n) (conj parts (seq [:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)])))))))
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: part in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:79:3) 
-([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println parts)
-    (multiply-parts part (dec n) (conj parts (seq [:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)]))))))
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: part in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:81:3) 
-([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println parts)
-    (multiply-parts part (dec n) (conj parts '([:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)]))))))
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: part in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:81:3) 
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n (hash-map)))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println parts)
-    (multiply-parts part (dec n) (conj parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)}))))))
-user=>
-#'user/multiply-parts
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n []))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (do (println parts)
-    (multiply-parts part (dec n) (conj parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)}))))))
-user=>
-#'user/multiply-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-
-[]
-[{:name head, :size 3}]
-[{:name head, :size 3} {:name head, :size 3}]
-[{:name head, :size 3} {:name head, :size 3} {:name head, :size 3}]
-[{:name head, :size 3} {:name head, :size 3} {:name head, :size 3} {:name head, :size 3}]
-[]
-[{:name 5-eye, :size 1}]
-[{:name 5-eye, :size 1} {:name 4-eye, :size 1}]
-[{:name 5-eye, :size 1} {:name 4-eye, :size 1} {:name 3-eye, :size 1}]
-[{:name 5-eye, :size 1} {:name 4-eye, :size 1} {:name 3-eye, :size 1} {:name 2-eye, :size 1}]
-[]
-[{:name 5-ear, :size 1}]
-[{:name 5-ear, :size 1} {:name 4-ear, :size 1}]
-[{:name 5-ear, :size 1} {:name 4-ear, :size 1} {:name 3-ear, :size 1}]
-[{:name 5-ear, :size 1} {:name 4-ear, :size 1} {:name 3-ear, :size 1} {:name 2-ear, :size 1}]
-[]
-[{:name mouth, :size 1}]
-[{:name mouth, :size 1} {:name mouth, :size 1}]
-[{:name mouth, :size 1} {:name mouth, :size 1} {:name mouth, :size 1}]
-[{:name mouth, :size 1} {:name mouth, :size 1} {:name mouth, :size 1} {:name mouth, :size 1}]
-[]
-[{:name nose, :size 1}]
-[{:name nose, :size 1} {:name nose, :size 1}]
-[{:name nose, :size 1} {:name nose, :size 1} {:name nose, :size 1}]
-[{:name nose, :size 1} {:name nose, :size 1} {:name nose, :size 1} {:name nose, :size 1}]
-[]
-[{:name neck, :size 2}]
-[{:name neck, :size 2} {:name neck, :size 2}]
-[{:name neck, :size 2} {:name neck, :size 2} {:name neck, :size 2}]
-[{:name neck, :size 2} {:name neck, :size 2} {:name neck, :size 2} {:name neck, :size 2}]
-[]
-[{:name 5-shoulder, :size 3}]
-[{:name 5-shoulder, :size 3} {:name 4-shoulder, :size 3}]
-[{:name 5-shoulder, :size 3} {:name 4-shoulder, :size 3} {:name 3-shoulder, :size 3}]
-[{:name 5-shoulder, :size 3} {:name 4-shoulder, :size 3} {:name 3-shoulder, :size 3} {:name 2-shoulder, :size 3}]
-[]
-[{:name 5-upper-arm, :size 3}]
-[{:name 5-upper-arm, :size 3} {:name 4-upper-arm, :size 3}]
-[{:name 5-upper-arm, :size 3} {:name 4-upper-arm, :size 3} {:name 3-upper-arm, :size 3}]
-[{:name 5-upper-arm, :size 3} {:name 4-upper-arm, :size 3} {:name 3-upper-arm, :size 3} {:name 2-upper-arm, :size 3}]
-[]
-[{:name chest, :size 10}]
-[{:name chest, :size 10} {:name chest, :size 10}]
-[{:name chest, :size 10} {:name chest, :size 10} {:name chest, :size 10}]
-[{:name chest, :size 10} {:name chest, :size 10} {:name chest, :size 10} {:name chest, :size 10}]
-[]
-[{:name back, :size 10}]
-[{:name back, :size 10} {:name back, :size 10}]
-[{:name back, :size 10} {:name back, :size 10} {:name back, :size 10}]
-[{:name back, :size 10} {:name back, :size 10} {:name back, :size 10} {:name back, :size 10}]
-[]
-[{:name 5-forearm, :size 3}]
-[{:name 5-forearm, :size 3} {:name 4-forearm, :size 3}]
-[{:name 5-forearm, :size 3} {:name 4-forearm, :size 3} {:name 3-forearm, :size 3}]
-[{:name 5-forearm, :size 3} {:name 4-forearm, :size 3} {:name 3-forearm, :size 3} {:name 2-forearm, :size 3}]
-[]
-[{:name abdomen, :size 6}]
-[{:name abdomen, :size 6} {:name abdomen, :size 6}]
-[{:name abdomen, :size 6} {:name abdomen, :size 6} {:name abdomen, :size 6}]
-[{:name abdomen, :size 6} {:name abdomen, :size 6} {:name abdomen, :size 6} {:name abdomen, :size 6}]
-[]
-[{:name 5-kidney, :size 1}]
-[{:name 5-kidney, :size 1} {:name 4-kidney, :size 1}]
-[{:name 5-kidney, :size 1} {:name 4-kidney, :size 1} {:name 3-kidney, :size 1}]
-[{:name 5-kidney, :size 1} {:name 4-kidney, :size 1} {:name 3-kidney, :size 1} {:name 2-kidney, :size 1}]
-[]
-[{:name 5-hand, :size 2}]
-[{:name 5-hand, :size 2} {:name 4-hand, :size 2}]
-[{:name 5-hand, :size 2} {:name 4-hand, :size 2} {:name 3-hand, :size 2}]
-[{:name 5-hand, :size 2} {:name 4-hand, :size 2} {:name 3-hand, :size 2} {:name 2-hand, :size 2}]
-[]
-[{:name 5-knee, :size 2}]
-[{:name 5-knee, :size 2} {:name 4-knee, :size 2}]
-[{:name 5-knee, :size 2} {:name 4-knee, :size 2} {:name 3-knee, :size 2}]
-[{:name 5-knee, :size 2} {:name 4-knee, :size 2} {:name 3-knee, :size 2} {:name 2-knee, :size 2}]
-[]
-[{:name 5-thigh, :size 4}]
-[{:name 5-thigh, :size 4} {:name 4-thigh, :size 4}]
-[{:name 5-thigh, :size 4} {:name 4-thigh, :size 4} {:name 3-thigh, :size 4}]
-[{:name 5-thigh, :size 4} {:name 4-thigh, :size 4} {:name 3-thigh, :size 4} {:name 2-thigh, :size 4}]
-[]
-[{:name 5-lower-leg, :size 3}]
-[{:name 5-lower-leg, :size 3} {:name 4-lower-leg, :size 3}]
-[{:name 5-lower-leg, :size 3} {:name 4-lower-leg, :size 3} {:name 3-lower-leg, :size 3}]
-[{:name 5-lower-leg, :size 3} {:name 4-lower-leg, :size 3} {:name 3-lower-leg, :size 3} {:name 2-lower-leg, :size 3}]
-[]
-[{:name 5-achilles, :size 1}]
-[{:name 5-achilles, :size 1} {:name 4-achilles, :size 1}]
-[{:name 5-achilles, :size 1} {:name 4-achilles, :size 1} {:name 3-achilles, :size 1}]
-[{:name 5-achilles, :size 1} {:name 4-achilles, :size 1} {:name 3-achilles, :size 1} {:name 2-achilles, :size 1}]
-[]
-[{:name 5-foot, :size 2}]
-[{:name 5-foot, :size 2} {:name 4-foot, :size 2}]
-[{:name 5-foot, :size 2} {:name 4-foot, :size 2} {:name 3-foot, :size 2}]
-[{:name 5-foot, :size 2} {:name 4-foot, :size 2} {:name 3-foot, :size 2} {:name 2-foot, :size 2}]
-user=>
-[[{:name "head", :size 3} {:name "head", :size 3} {:name "head", :size 3} {:name "head", :size 3} {:name "head", :size 3}] [{:name "5-eye", :size 1} {:name "4-eye", :size 1} {:name "3-eye", :size 1} {:name "2-eye", :size 1} {:name "1-eye", :size 1}] [{:name "5-ear", :size 1} {:name "4-ear", :size 1} {:name "3-ear", :size 1} {:name "2-ear", :size 1} {:name "1-ear", :size 1}] [{:name "mouth", :size 1} {:name "mouth", :size 1} {:name "mouth", :size 1} {:name "mouth", :size 1} {:name "mouth", :size 1}] [{:name "nose", :size 1} {:name "nose", :size 1} {:name "nose", :size 1} {:name "nose", :size 1} {:name "nose", :size 1}] [{:name "neck", :size 2} {:name "neck", :size 2} {:name "neck", :size 2} {:name "neck", :size 2} {:name "neck", :size 2}] [{:name "5-shoulder", :size 3} {:name "4-shoulder", :size 3} {:name "3-shoulder", :size 3} {:name "2-shoulder", :size 3} {:name "1-shoulder", :size 3}] [{:name "5-upper-arm", :size 3} {:name "4-upper-arm", :size 3} {:name "3-upper-arm", :size 3} {:name "2-upper-arm", :size 3} {:name "1-upper-arm", :size 3}] [{:name "chest", :size 10} {:name "chest", :size 10} {:name "chest", :size 10} {:name "chest", :size 10} {:name "chest", :size 10}] [{:name "back", :size 10} {:name "back", :size 10} {:name "back", :size 10} {:name "back", :size 10} {:name "back", :size 10}] [{:name "5-forearm", :size 3} {:name "4-forearm", :size 3} {:name "3-forearm", :size 3} {:name "2-forearm", :size 3} {:name "1-forearm", :size 3}] [{:name "abdomen", :size 6} {:name "abdomen", :size 6} {:name "abdomen", :size 6} {:name "abdomen", :size 6} {:name "abdomen", :size 6}] [{:name "5-kidney", :size 1} {:name "4-kidney", :size 1} {:name "3-kidney", :size 1} {:name "2-kidney", :size 1} {:name "1-kidney", :size 1}] [{:name "5-hand", :size 2} {:name "4-hand", :size 2} {:name "3-hand", :size 2} {:name "2-hand", :size 2} {:name "1-hand", :size 2}] [{:name "5-knee", :size 2} {:name "4-knee", :size 2} {:name "3-knee", :size 2} {:name "2-knee", :size 2} {:name "1-knee", :size 2}] [{:name "5-thigh", :size 4} {:name "4-thigh", :size 4} {:name "3-thigh", :size 4} {:name "2-thigh", :size 4} {:name "1-thigh", :size 4}] [{:name "5-lower-leg", :size 3} {:name "4-lower-leg", :size 3} {:name "3-lower-leg", :size 3} {:name "2-lower-leg", :size 3} {:name "1-lower-leg", :size 3}] [{:name "5-achilles", :size 1} {:name "4-achilles", :size 1} {:name "3-achilles", :size 1} {:name "2-achilles", :size 1} {:name "1-achilles", :size 1}] [{:name "5-foot", :size 2} {:name "4-foot", :size 2} {:name "3-foot", :size 2} {:name "2-foot", :size 2} {:name "1-foot", :size 2}]]
-(defn better-symmetrize-body-parts
-  "Expects a seq of maps that have a :name and :size"
-  [asym-body-parts]
-  (reduce (fn [final-body-parts part]
-            (into final-body-parts (set (matching-parts part 5))))
-          []
-          asym-body-parts))
-user=>
-#'user/better-symmetrize-body-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-
-[]
-[{:name head, :size 3}]
-[{:name head, :size 3} {:name head, :size 3}]
-[{:name head, :size 3} {:name head, :size 3} {:name head, :size 3}]
-[{:name head, :size 3} {:name head, :size 3} {:name head, :size 3} {:name head, :size 3}]
-[]
-[{:name 5-eye, :size 1}]
-[{:name 5-eye, :size 1} {:name 4-eye, :size 1}]
-[{:name 5-eye, :size 1} {:name 4-eye, :size 1} {:name 3-eye, :size 1}]
-[{:name 5-eye, :size 1} {:name 4-eye, :size 1} {:name 3-eye, :size 1} {:name 2-eye, :size 1}]
-[]
-[{:name 5-ear, :size 1}]
-[{:name 5-ear, :size 1} {:name 4-ear, :size 1}]
-[{:name 5-ear, :size 1} {:name 4-ear, :size 1} {:name 3-ear, :size 1}]
-[{:name 5-ear, :size 1} {:name 4-ear, :size 1} {:name 3-ear, :size 1} {:name 2-ear, :size 1}]
-[]
-[{:name mouth, :size 1}]
-[{:name mouth, :size 1} {:name mouth, :size 1}]
-[{:name mouth, :size 1} {:name mouth, :size 1} {:name mouth, :size 1}]
-[{:name mouth, :size 1} {:name mouth, :size 1} {:name mouth, :size 1} {:name mouth, :size 1}]
-[]
-[{:name nose, :size 1}]
-[{:name nose, :size 1} {:name nose, :size 1}]
-[{:name nose, :size 1} {:name nose, :size 1} {:name nose, :size 1}]
-[{:name nose, :size 1} {:name nose, :size 1} {:name nose, :size 1} {:name nose, :size 1}]
-[]
-[{:name neck, :size 2}]
-[{:name neck, :size 2} {:name neck, :size 2}]
-[{:name neck, :size 2} {:name neck, :size 2} {:name neck, :size 2}]
-[{:name neck, :size 2} {:name neck, :size 2} {:name neck, :size 2} {:name neck, :size 2}]
-[]
-[{:name 5-shoulder, :size 3}]
-[{:name 5-shoulder, :size 3} {:name 4-shoulder, :size 3}]
-[{:name 5-shoulder, :size 3} {:name 4-shoulder, :size 3} {:name 3-shoulder, :size 3}]
-[{:name 5-shoulder, :size 3} {:name 4-shoulder, :size 3} {:name 3-shoulder, :size 3} {:name 2-shoulder, :size 3}]
-[]
-[{:name 5-upper-arm, :size 3}]
-[{:name 5-upper-arm, :size 3} {:name 4-upper-arm, :size 3}]
-[{:name 5-upper-arm, :size 3} {:name 4-upper-arm, :size 3} {:name 3-upper-arm, :size 3}]
-[{:name 5-upper-arm, :size 3} {:name 4-upper-arm, :size 3} {:name 3-upper-arm, :size 3} {:name 2-upper-arm, :size 3}]
-[]
-[{:name chest, :size 10}]
-[{:name chest, :size 10} {:name chest, :size 10}]
-[{:name chest, :size 10} {:name chest, :size 10} {:name chest, :size 10}]
-[{:name chest, :size 10} {:name chest, :size 10} {:name chest, :size 10} {:name chest, :size 10}]
-[]
-[{:name back, :size 10}]
-[{:name back, :size 10} {:name back, :size 10}]
-[{:name back, :size 10} {:name back, :size 10} {:name back, :size 10}]
-[{:name back, :size 10} {:name back, :size 10} {:name back, :size 10} {:name back, :size 10}]
-[]
-[{:name 5-forearm, :size 3}]
-[{:name 5-forearm, :size 3} {:name 4-forearm, :size 3}]
-[{:name 5-forearm, :size 3} {:name 4-forearm, :size 3} {:name 3-forearm, :size 3}]
-[{:name 5-forearm, :size 3} {:name 4-forearm, :size 3} {:name 3-forearm, :size 3} {:name 2-forearm, :size 3}]
-[]
-[{:name abdomen, :size 6}]
-[{:name abdomen, :size 6} {:name abdomen, :size 6}]
-[{:name abdomen, :size 6} {:name abdomen, :size 6} {:name abdomen, :size 6}]
-[{:name abdomen, :size 6} {:name abdomen, :size 6} {:name abdomen, :size 6} {:name abdomen, :size 6}]
-[]
-[{:name 5-kidney, :size 1}]
-[{:name 5-kidney, :size 1} {:name 4-kidney, :size 1}]
-[{:name 5-kidney, :size 1} {:name 4-kidney, :size 1} {:name 3-kidney, :size 1}]
-[{:name 5-kidney, :size 1} {:name 4-kidney, :size 1} {:name 3-kidney, :size 1} {:name 2-kidney, :size 1}]
-[]
-[{:name 5-hand, :size 2}]
-[{:name 5-hand, :size 2} {:name 4-hand, :size 2}]
-[{:name 5-hand, :size 2} {:name 4-hand, :size 2} {:name 3-hand, :size 2}]
-[{:name 5-hand, :size 2} {:name 4-hand, :size 2} {:name 3-hand, :size 2} {:name 2-hand, :size 2}]
-[]
-[{:name 5-knee, :size 2}]
-[{:name 5-knee, :size 2} {:name 4-knee, :size 2}]
-[{:name 5-knee, :size 2} {:name 4-knee, :size 2} {:name 3-knee, :size 2}]
-[{:name 5-knee, :size 2} {:name 4-knee, :size 2} {:name 3-knee, :size 2} {:name 2-knee, :size 2}]
-[]
-[{:name 5-thigh, :size 4}]
-[{:name 5-thigh, :size 4} {:name 4-thigh, :size 4}]
-[{:name 5-thigh, :size 4} {:name 4-thigh, :size 4} {:name 3-thigh, :size 4}]
-[{:name 5-thigh, :size 4} {:name 4-thigh, :size 4} {:name 3-thigh, :size 4} {:name 2-thigh, :size 4}]
-[]
-[{:name 5-lower-leg, :size 3}]
-[{:name 5-lower-leg, :size 3} {:name 4-lower-leg, :size 3}]
-[{:name 5-lower-leg, :size 3} {:name 4-lower-leg, :size 3} {:name 3-lower-leg, :size 3}]
-[{:name 5-lower-leg, :size 3} {:name 4-lower-leg, :size 3} {:name 3-lower-leg, :size 3} {:name 2-lower-leg, :size 3}]
-[]
-[{:name 5-achilles, :size 1}]
-[{:name 5-achilles, :size 1} {:name 4-achilles, :size 1}]
-[{:name 5-achilles, :size 1} {:name 4-achilles, :size 1} {:name 3-achilles, :size 1}]
-[{:name 5-achilles, :size 1} {:name 4-achilles, :size 1} {:name 3-achilles, :size 1} {:name 2-achilles, :size 1}]
-[]
-[{:name 5-foot, :size 2}]
-[{:name 5-foot, :size 2} {:name 4-foot, :size 2}]
-[{:name 5-foot, :size 2} {:name 4-foot, :size 2} {:name 3-foot, :size 2}]
-[{:name 5-foot, :size 2} {:name 4-foot, :size 2} {:name 3-foot, :size 2} {:name 2-foot, :size 2}]
-user=>
-[{:name "head", :size 3} {:name "5-eye", :size 1} {:name "3-eye", :size 1} {:name "2-eye", :size 1} {:name "1-eye", :size 1} {:name "4-eye", :size 1} {:name "3-ear", :size 1} {:name "1-ear", :size 1} {:name "2-ear", :size 1} {:name "4-ear", :size 1} {:name "5-ear", :size 1} {:name "mouth", :size 1} {:name "nose", :size 1} {:name "neck", :size 2} {:name "5-shoulder", :size 3} {:name "4-shoulder", :size 3} {:name "2-shoulder", :size 3} {:name "1-shoulder", :size 3} {:name "3-shoulder", :size 3} {:name "4-upper-arm", :size 3} {:name "5-upper-arm", :size 3} {:name "3-upper-arm", :size 3} {:name "2-upper-arm", :size 3} {:name "1-upper-arm", :size 3} {:name "chest", :size 10} {:name "back", :size 10} {:name "2-forearm", :size 3} {:name "4-forearm", :size 3} {:name "1-forearm", :size 3} {:name "5-forearm", :size 3} {:name "3-forearm", :size 3} {:name "abdomen", :size 6} {:name "2-kidney", :size 1} {:name "4-kidney", :size 1} {:name "5-kidney", :size 1} {:name "3-kidney", :size 1} {:name "1-kidney", :size 1} {:name "5-hand", :size 2} {:name "2-hand", :size 2} {:name "4-hand", :size 2} {:name "1-hand", :size 2} {:name "3-hand", :size 2} {:name "3-knee", :size 2} {:name "1-knee", :size 2} {:name "5-knee", :size 2} {:name "2-knee", :size 2} {:name "4-knee", :size 2} {:name "3-thigh", :size 4} {:name "2-thigh", :size 4} {:name "5-thigh", :size 4} {:name "4-thigh", :size 4} {:name "1-thigh", :size 4} {:name "1-lower-leg", :size 3} {:name "4-lower-leg", :size 3} {:name "5-lower-leg", :size 3} {:name "3-lower-leg", :size 3} {:name "2-lower-leg", :size 3} {:name "2-achilles", :size 1} {:name "5-achilles", :size 1} {:name "3-achilles", :size 1} {:name "4-achilles", :size 1} {:name "1-achilles", :size 1} {:name "2-foot", :size 2} {:name "5-foot", :size 2} {:name "3-foot", :size 2} {:name "1-foot", :size 2} {:name "4-foot", :size 2}]
-(re-find #"^left-" (:name (get 0 asym-hobbit-body-parts)))
-NullPointerException   java.util.regex.Matcher.getTextLength (Matcher.java:1283)
-(re-find #"^left-" (:name (get 1 asym-hobbit-body-parts)))
-NullPointerException   java.util.regex.Matcher.getTextLength (Matcher.java:1283)
-(re-find #"^left-" (:name (get asym-hobbit-body-parts 0)))
-user=>
-nil
-(if [(re-find #"^left-" (:name (get asym-hobbit-body-parts 0))))
+"CJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03aJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03rJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03lJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03iJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03sJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03lJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03eJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03 JE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03CJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03uJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03lJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03lJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03eJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03nJE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n03,JE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0oE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0bE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0 E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0BE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0lE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0aE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0cE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0kE\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n0,E\nd\nw\na\nr\nd\n \nC\nu\nl\nl\ne\nn\n,\n1\n036"
+(defn str->csv
+  [suspects]
+  (reduce (# (clojure.string/join "\n" %)) (map (fn [suspect]
+            (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+            suspects)))
+RuntimeException Reader tag must be a symbol  clojure.lang.LispReader$CtorReader.invoke (LispReader.java:1221)
+RuntimeException Unmatched delimiter: )  clojure.lang.Util.runtimeException (Util.java:221)
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: suspects in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:35:44) 
 RuntimeException Unmatched delimiter: )  clojure.lang.Util.runtimeException (Util.java:221)
 RuntimeException Unmatched delimiter: )  clojure.lang.Util.runtimeException (Util.java:221)
-(if [(re-find #"^left-" (:name (get asym-hobbit-body-parts 0)))])
-CompilerException java.lang.RuntimeException: Too few arguments to if, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:1:5) 
-(re-find #"^left-" (:name (get 1 asym-hobbit-body-parts)))
-NullPointerException   java.util.regex.Matcher.getTextLength (Matcher.java:1283)
-(re-find #"^left-" (:name (get asym-hobbit-body-parts 1)))
+(defn str->csv
+  [suspects]
+  (reduce ( #(clojure.string/join "\n" %)) (map (fn [suspect]
+            (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+            suspects)))
 user=>
-"left-"
-(let-if 
-  [palavra (re-find #"^left-" (:name (get asym-hobbit-body-parts 1)))]
-  palavra)
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: let-if in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:1:5) 
-(if 
-  [(re-find #"^left-" (:name (get asym-hobbit-body-parts 1)))]
-  "sa")
+#'user/str->csv
+(str->csv records)
+ArityException Wrong number of args (0) passed to: user/str->csv/fn--7662  clojure.lang.AFn.throwArity (AFn.java:429)
+suspects
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: suspects in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:1:4282) 
+records
 user=>
-"sa"
-(if 
-  [(re-find #"^left-" (:name (get asym-hobbit-body-parts 0)))]
-  "sa")
+[{:name "Edward Cullen", :glitter-index 10} {:name "Jacob Black", :glitter-index 3} {:name "Carlisle Cullen", :glitter-index 6}]
+(defn str->csv
+  [suspects]
+  (reduce (# (clojure.string/join "\n" %)) (map (fn [suspect]
+            (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+            suspects)))
+RuntimeException Reader tag must be a symbol  clojure.lang.LispReader$CtorReader.invoke (LispReader.java:1221)
+RuntimeException Unmatched delimiter: )  clojure.lang.Util.runtimeException (Util.java:221)
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: suspects in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:35:44) 
+RuntimeException Unmatched delimiter: )  clojure.lang.Util.runtimeException (Util.java:221)
+RuntimeException Unmatched delimiter: )  clojure.lang.Util.runtimeException (Util.java:221)
+(defn str->csv
+  [suspects]
+  (reduce (#(clojure.string/join "\n" %)) (map (fn [suspect]
+            (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+            suspects)))
 user=>
-"sa"
-(defn matching-parts
-  [part n]
-  (if [(re-matches #"^left-" (:name part))]
-    (multiply-parts part n)
-    [part]))
+#'user/str->csv
+(str->csv records)
+ArityException Wrong number of args (0) passed to: user/str->csv/fn--7750  clojure.lang.AFn.throwArity (AFn.java:429)
+(map (fn [suspect]
+          (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+          records)
 user=>
-#'user/matching-parts
-(if 
-  [(re-matches #"^left-" (:name (get asym-hobbit-body-parts 0)))]
-  "sa")
+("Edward Cullen,10" "Jacob Black,3" "Carlisle Cullen,6")
+  (reduce (#(clojure.string/join "\n" %)) (map (fn [suspect]
+          (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+          records))
+ArityException Wrong number of args (0) passed to: user/eval7811/fn--7812  clojure.lang.AFn.throwArity (AFn.java:429)
+  (reduce (#(clojure.string/join "\n" %1)) (map (fn [suspect]
+          (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+          records))
+ArityException Wrong number of args (0) passed to: user/eval7825/fn--7826  clojure.lang.AFn.throwArity (AFn.java:429)
+  (reduce #(clojure.string/join "\n" %1) (map (fn [suspect]
+          (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+          records))
+ArityException Wrong number of args (2) passed to: user/eval7832/fn--7833  clojure.lang.AFn.throwArity (AFn.java:429)
+(defn str->csv
+  [suspects]
+  (reduce (fn [string] (clojure.string/join "\n" %1))
+  (map (fn [suspect]
+            (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+            suspects)))
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: %1 in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/04/chapter4.clj:35:24) 
+(defn str->csv
+  [suspects]
+  (reduce (fn [string] (clojure.string/join "\n" string))
+  (map (fn [suspect]
+            (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+            suspects)))
 user=>
-"sa"
-(re-matches #"^left-" (:name (get asym-hobbit-body-parts 0)))
+#'user/str->csv
+(str->csv records)
+ArityException Wrong number of args (2) passed to: user/str->csv/fn--7937  clojure.lang.AFn.throwArity (AFn.java:429)
+(reduce (fn [string] (clojure.string/join "\n" string)
+'("Edward Cullen,10" "Jacob Black,3" "Carlisle Cullen,6"))
+RuntimeException EOF while reading, starting at line 1  clojure.lang.Util.runtimeException (Util.java:221)
+(reduce (fn [string] (clojure.string/join "\n" string))
+'("Edward Cullen,10" "Jacob Black,3" "Carlisle Cullen,6"))
+ArityException Wrong number of args (2) passed to: user/eval7944/fn--7945  clojure.lang.AFn.throwArity (AFn.java:429)
+(reduce (fn [string] (clojure.string/join "\n" string))
+["Edward Cullen,10" "Jacob Black,3" "Carlisle Cullen,6"])
+ArityException Wrong number of args (2) passed to: user/eval7948/fn--7949  clojure.lang.AFn.throwArity (AFn.java:429)
+(reduce (fn ha [string] (clojure.string/join "\n" string))
+["Edward Cullen,10" "Jacob Black,3" "Carlisle Cullen,6"])
+ArityException Wrong number of args (2) passed to: user/eval7952/ha--7953  clojure.lang.AFn.throwArity (AFn.java:429)
+(reduce (fn ha [string] (clojure.string/join string))
+["Edward Cullen,10" "Jacob Black,3" "Carlisle Cullen,6"])
+ArityException Wrong number of args (2) passed to: user/eval7956/ha--7957  clojure.lang.AFn.throwArity (AFn.java:429)
+(reduce (fn ha [string] (clojure.string/join "\n" string))
+)
+ArityException Wrong number of args (1) passed to: core/reduce  clojure.lang.AFn.throwArity (AFn.java:429)
+(defn str->csv
+  [suspects]
+  (clojure.string/join "\n"
+  (map (fn [suspect]
+            (clojure.string/join "," [(:name suspect) (:glitter-index suspect)]))
+            suspects)))
 user=>
-nil
-(re-matches #"^left-" (:name (get asym-hobbit-body-parts 1)))
+#'user/str->csv
+(str->csv records)
 user=>
-nil
-(if 
-  [(& true (re-matches #"^left-" (:name (get asym-hobbit-body-parts 0))))]
-  "sa")
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: & in this context, compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:2:4) 
-(if 
-  [(and true (re-matches #"^left-" (:name (get asym-hobbit-body-parts 0))))]
-  "sa")
+"Edward Cullen,10\nJacob Black,3\nCarlisle Cullen,6"
+(def records [{:name "Edward Cullen", :glitter-index 10}
+ {:name "Bella Swan", :glitter-index 0}
+ {:name "Charlie Swan", :glitter-index 0}
+ {:name "Jacob Black", :glitter-index 3}
+ {:name "Carlisle Cullen", :glitter-index 6}])
 user=>
-"sa"
-(and true nil)
+#'user/records
+(str->csv records)
 user=>
-nil
-(if (nil)
-"as"
-"das")
-CompilerException java.lang.IllegalArgumentException: Can't call nil, form: (nil), compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:1:9) 
-(if [nil]
-"as"
-"das")
+"Edward Cullen,10\nBella Swan,0\nCharlie Swan,0\nJacob Black,3\nCarlisle Cullen,6"
+records
 user=>
-"as"
-(if [(not nil)]
-"as"
-"das")
+[{:name "Edward Cullen", :glitter-index 10} {:name "Bella Swan", :glitter-index 0} {:name "Charlie Swan", :glitter-index 0} {:name "Jacob Black", :glitter-index 3} {:name "Carlisle Cullen", :glitter-index 6}]
+(defn str->csv
+  [suspects]
+  (clojure.string/join "\n" (map #(clojure.string/join "," [(:name %) (:glitter-index %)]) suspects)))
 user=>
-"as"
-(if [(nil)]
-"as"
-"das")
-CompilerException java.lang.IllegalArgumentException: Can't call nil, form: (nil), compiling:(/Users/michelly/Desktop/projetos/cftbat-exercises/03/chapter3.clj:1:10) 
-(defn matching-parts
-  [part n]
-  (if [(nil? (re-find #"^left-" (:name part)))]
-    [part]
-    (multiply-parts part n)))
+#'user/str->csv
+(str->csv records)
 user=>
-#'user/matching-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-
-user=>
-[{:name "head", :size 3} {:name "left-eye", :size 1} {:name "left-ear", :size 1} {:name "mouth", :size 1} {:name "nose", :size 1} {:name "neck", :size 2} {:name "left-shoulder", :size 3} {:name "left-upper-arm", :size 3} {:name "chest", :size 10} {:name "back", :size 10} {:name "left-forearm", :size 3} {:name "abdomen", :size 6} {:name "left-kidney", :size 1} {:name "left-hand", :size 2} {:name "left-knee", :size 2} {:name "left-thigh", :size 4} {:name "left-lower-leg", :size 3} {:name "left-achilles", :size 1} {:name "left-foot", :size 2}]
-(if 
-  [(re-matches #"^left-" (:name (get asym-hobbit-body-parts 0)))]
-  "sa")
-user=>
-"sa"
-(if 
-  [(nil? (re-matches #"^left-" (:name (get asym-hobbit-body-parts 0))))]
-  "sa")
-user=>
-"sa"
-(if 
-  [(nil? (re-matches #"^left-" (:name (get asym-hobbit-body-parts 1))))]
-  "sa")
-user=>
-"sa"
-(defn matching-parts
-  [part n]
-  (if (re-find #"^left-" (:name part))
-    (multiply-parts part n)
-    [part]))
-user=>
-#'user/matching-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-
-[]
-[{:name 5-eye, :size 1}]
-[{:name 5-eye, :size 1} {:name 4-eye, :size 1}]
-[{:name 5-eye, :size 1} {:name 4-eye, :size 1} {:name 3-eye, :size 1}]
-[{:name 5-eye, :size 1} {:name 4-eye, :size 1} {:name 3-eye, :size 1} {:name 2-eye, :size 1}]
-[]
-[{:name 5-ear, :size 1}]
-[{:name 5-ear, :size 1} {:name 4-ear, :size 1}]
-[{:name 5-ear, :size 1} {:name 4-ear, :size 1} {:name 3-ear, :size 1}]
-[{:name 5-ear, :size 1} {:name 4-ear, :size 1} {:name 3-ear, :size 1} {:name 2-ear, :size 1}]
-[]
-[{:name 5-shoulder, :size 3}]
-[{:name 5-shoulder, :size 3} {:name 4-shoulder, :size 3}]
-[{:name 5-shoulder, :size 3} {:name 4-shoulder, :size 3} {:name 3-shoulder, :size 3}]
-[{:name 5-shoulder, :size 3} {:name 4-shoulder, :size 3} {:name 3-shoulder, :size 3} {:name 2-shoulder, :size 3}]
-[]
-[{:name 5-upper-arm, :size 3}]
-[{:name 5-upper-arm, :size 3} {:name 4-upper-arm, :size 3}]
-[{:name 5-upper-arm, :size 3} {:name 4-upper-arm, :size 3} {:name 3-upper-arm, :size 3}]
-[{:name 5-upper-arm, :size 3} {:name 4-upper-arm, :size 3} {:name 3-upper-arm, :size 3} {:name 2-upper-arm, :size 3}]
-[]
-[{:name 5-forearm, :size 3}]
-[{:name 5-forearm, :size 3} {:name 4-forearm, :size 3}]
-[{:name 5-forearm, :size 3} {:name 4-forearm, :size 3} {:name 3-forearm, :size 3}]
-[{:name 5-forearm, :size 3} {:name 4-forearm, :size 3} {:name 3-forearm, :size 3} {:name 2-forearm, :size 3}]
-[]
-[{:name 5-kidney, :size 1}]
-[{:name 5-kidney, :size 1} {:name 4-kidney, :size 1}]
-[{:name 5-kidney, :size 1} {:name 4-kidney, :size 1} {:name 3-kidney, :size 1}]
-[{:name 5-kidney, :size 1} {:name 4-kidney, :size 1} {:name 3-kidney, :size 1} {:name 2-kidney, :size 1}]
-[]
-[{:name 5-hand, :size 2}]
-[{:name 5-hand, :size 2} {:name 4-hand, :size 2}]
-[{:name 5-hand, :size 2} {:name 4-hand, :size 2} {:name 3-hand, :size 2}]
-[{:name 5-hand, :size 2} {:name 4-hand, :size 2} {:name 3-hand, :size 2} {:name 2-hand, :size 2}]
-[]
-[{:name 5-knee, :size 2}]
-[{:name 5-knee, :size 2} {:name 4-knee, :size 2}]
-[{:name 5-knee, :size 2} {:name 4-knee, :size 2} {:name 3-knee, :size 2}]
-[{:name 5-knee, :size 2} {:name 4-knee, :size 2} {:name 3-knee, :size 2} {:name 2-knee, :size 2}]
-[]
-[{:name 5-thigh, :size 4}]
-[{:name 5-thigh, :size 4} {:name 4-thigh, :size 4}]
-[{:name 5-thigh, :size 4} {:name 4-thigh, :size 4} {:name 3-thigh, :size 4}]
-[{:name 5-thigh, :size 4} {:name 4-thigh, :size 4} {:name 3-thigh, :size 4} {:name 2-thigh, :size 4}]
-[]
-[{:name 5-lower-leg, :size 3}]
-[{:name 5-lower-leg, :size 3} {:name 4-lower-leg, :size 3}]
-[{:name 5-lower-leg, :size 3} {:name 4-lower-leg, :size 3} {:name 3-lower-leg, :size 3}]
-[{:name 5-lower-leg, :size 3} {:name 4-lower-leg, :size 3} {:name 3-lower-leg, :size 3} {:name 2-lower-leg, :size 3}]
-[]
-[{:name 5-achilles, :size 1}]
-[{:name 5-achilles, :size 1} {:name 4-achilles, :size 1}]
-[{:name 5-achilles, :size 1} {:name 4-achilles, :size 1} {:name 3-achilles, :size 1}]
-[{:name 5-achilles, :size 1} {:name 4-achilles, :size 1} {:name 3-achilles, :size 1} {:name 2-achilles, :size 1}]
-[]
-[{:name 5-foot, :size 2}]
-[{:name 5-foot, :size 2} {:name 4-foot, :size 2}]
-[{:name 5-foot, :size 2} {:name 4-foot, :size 2} {:name 3-foot, :size 2}]
-[{:name 5-foot, :size 2} {:name 4-foot, :size 2} {:name 3-foot, :size 2} {:name 2-foot, :size 2}]
-user=>
-[{:name "head", :size 3} {:name "5-eye", :size 1} {:name "3-eye", :size 1} {:name "2-eye", :size 1} {:name "1-eye", :size 1} {:name "4-eye", :size 1} {:name "3-ear", :size 1} {:name "1-ear", :size 1} {:name "2-ear", :size 1} {:name "4-ear", :size 1} {:name "5-ear", :size 1} {:name "mouth", :size 1} {:name "nose", :size 1} {:name "neck", :size 2} {:name "5-shoulder", :size 3} {:name "4-shoulder", :size 3} {:name "2-shoulder", :size 3} {:name "1-shoulder", :size 3} {:name "3-shoulder", :size 3} {:name "4-upper-arm", :size 3} {:name "5-upper-arm", :size 3} {:name "3-upper-arm", :size 3} {:name "2-upper-arm", :size 3} {:name "1-upper-arm", :size 3} {:name "chest", :size 10} {:name "back", :size 10} {:name "2-forearm", :size 3} {:name "4-forearm", :size 3} {:name "1-forearm", :size 3} {:name "5-forearm", :size 3} {:name "3-forearm", :size 3} {:name "abdomen", :size 6} {:name "2-kidney", :size 1} {:name "4-kidney", :size 1} {:name "5-kidney", :size 1} {:name "3-kidney", :size 1} {:name "1-kidney", :size 1} {:name "5-hand", :size 2} {:name "2-hand", :size 2} {:name "4-hand", :size 2} {:name "1-hand", :size 2} {:name "3-hand", :size 2} {:name "3-knee", :size 2} {:name "1-knee", :size 2} {:name "5-knee", :size 2} {:name "2-knee", :size 2} {:name "4-knee", :size 2} {:name "3-thigh", :size 4} {:name "2-thigh", :size 4} {:name "5-thigh", :size 4} {:name "4-thigh", :size 4} {:name "1-thigh", :size 4} {:name "1-lower-leg", :size 3} {:name "4-lower-leg", :size 3} {:name "5-lower-leg", :size 3} {:name "3-lower-leg", :size 3} {:name "2-lower-leg", :size 3} {:name "2-achilles", :size 1} {:name "5-achilles", :size 1} {:name "3-achilles", :size 1} {:name "4-achilles", :size 1} {:name "1-achilles", :size 1} {:name "2-foot", :size 2} {:name "5-foot", :size 2} {:name "3-foot", :size 2} {:name "1-foot", :size 2} {:name "4-foot", :size 2}]
-
-(defn matching-parts
-  [part n]
-  (if (re-find #"^left-" (:name part))
-    (multiply-parts part n)
-    [part]))
-
-(defn multiply-parts
-  ([part n]
-    (multiply-parts part n []))
-  ([part n parts]
-    (if (= 0 n)
-    parts
-    (multiply-parts part (dec n) (conj parts {:name (clojure.string/replace (:name part) #"^left" (str n))
-                 :size (:size part)})))))
-
-(defn better-symmetrize-body-parts
-  "Expects a seq of maps that have a :name and :size"
-  [asym-body-parts]
-  (reduce (fn [final-body-parts part]
-            (into final-body-parts (set (matching-parts part 5))))
-          []
-          asym-body-parts))
-user=>
-#'user/better-symmetrize-body-parts
-(better-symmetrize-body-parts asym-hobbit-body-parts)
-
-
-
-
-user=>
-[{:name "head", :size 3} {:name "5-eye", :size 1} {:name "3-eye", :size 1} {:name "2-eye", :size 1} {:name "1-eye", :size 1} {:name "4-eye", :size 1} {:name "3-ear", :size 1} {:name "1-ear", :size 1} {:name "2-ear", :size 1} {:name "4-ear", :size 1} {:name "5-ear", :size 1} {:name "mouth", :size 1} {:name "nose", :size 1} {:name "neck", :size 2} {:name "5-shoulder", :size 3} {:name "4-shoulder", :size 3} {:name "2-shoulder", :size 3} {:name "1-shoulder", :size 3} {:name "3-shoulder", :size 3} {:name "4-upper-arm", :size 3} {:name "5-upper-arm", :size 3} {:name "3-upper-arm", :size 3} {:name "2-upper-arm", :size 3} {:name "1-upper-arm", :size 3} {:name "chest", :size 10} {:name "back", :size 10} {:name "2-forearm", :size 3} {:name "4-forearm", :size 3} {:name "1-forearm", :size 3} {:name "5-forearm", :size 3} {:name "3-forearm", :size 3} {:name "abdomen", :size 6} {:name "2-kidney", :size 1} {:name "4-kidney", :size 1} {:name "5-kidney", :size 1} {:name "3-kidney", :size 1} {:name "1-kidney", :size 1} {:name "5-hand", :size 2} {:name "2-hand", :size 2} {:name "4-hand", :size 2} {:name "1-hand", :size 2} {:name "3-hand", :size 2} {:name "3-knee", :size 2} {:name "1-knee", :size 2} {:name "5-knee", :size 2} {:name "2-knee", :size 2} {:name "4-knee", :size 2} {:name "3-thigh", :size 4} {:name "2-thigh", :size 4} {:name "5-thigh", :size 4} {:name "4-thigh", :size 4} {:name "1-thigh", :size 4} {:name "1-lower-leg", :size 3} {:name "4-lower-leg", :size 3} {:name "5-lower-leg", :size 3} {:name "3-lower-leg", :size 3} {:name "2-lower-leg", :size 3} {:name "2-achilles", :size 1} {:name "5-achilles", :size 1} {:name "3-achilles", :size 1} {:name "4-achilles", :size 1} {:name "1-achilles", :size 1} {:name "2-foot", :size 2} {:name "5-foot", :size 2} {:name "3-foot", :size 2} {:name "1-foot", :size 2} {:name "4-foot", :size 2}]
+"Edward Cullen,10\nBella Swan,0\nCharlie Swan,0\nJacob Black,3\nCarlisle Cullen,6"
 --------------------
